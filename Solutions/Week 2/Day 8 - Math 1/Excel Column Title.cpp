@@ -15,16 +15,13 @@ string Solution::convertToTitle(int A) {
 
     vector <char> ans;
     
-    while(A>0)
-    {
+    while(A>0){
         int remainder = A % 26;
-        if(remainder == 0)
-        {
+        if(remainder == 0){
             ans.push_back('Z');
             A = (A/26)-1;
         }
-        else
-        {
+        else{
             ans.push_back((remainder-1) + 'A');
             A = A/26;
         }
