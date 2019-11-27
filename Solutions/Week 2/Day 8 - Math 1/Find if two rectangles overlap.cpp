@@ -57,8 +57,10 @@ int Solution::solve(int A, int B, int C, int D, int E, int F, int G, int H) {
 /* Solution Explanation 
 https://stackoverflow.com/questions/306316/determine-if-two-rectangles-overlap-each-other */
 /* 
-
+        A      <     G       &&      C      >     E
 if (RectA.Left < RectB.Right && RectA.Right > RectB.Left &&
+
+        D      >     F       &&     B      <     H
      RectA.Top > RectB.Bottom && RectA.Bottom < RectB.Top ) 
 or, using Cartesian coordinates
 
