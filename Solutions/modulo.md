@@ -1,4 +1,8 @@
-https://www.quora.com/How-do-I-output-modulo-10-9-+-7-in-competitive-programming
+Original Post on [quora.com][1].
+
+[1]: https://www.quora.com/How-do-I-output-modulo-10-9-+-7-in-competitive-programming        "quora.com"
+
+
 -----------------------------------------------------------
 How do I output modulo 10^9 + 7 in competitive programming?
 -----------------------------------------------------------
