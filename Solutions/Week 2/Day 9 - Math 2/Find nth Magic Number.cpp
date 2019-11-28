@@ -33,11 +33,16 @@ int Solution::solve(int A) {
     int pow = 1;
     int ans = 0;
     
+    // Check every bit of A
     while(A){
         pow = pow *5;
+        
+        // If last bit of A is set
         if(A&1)
             ans += pow;
-        A>>=1;
+
+        // proceed to next bit
+        A>>=1;  // or A = A/2 both are same.
     }
     return ans;
 }
