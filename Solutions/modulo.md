@@ -1,4 +1,7 @@
+https://www.quora.com/How-do-I-output-modulo-10-9-+-7-in-competitive-programming
+-----------------------------------------------------------
 How do I output modulo 10^9 + 7 in competitive programming?
+-----------------------------------------------------------
 
 There are many questions that requires the answer with modulo 10^9+7, so that number does not overflow.
 
@@ -6,11 +9,14 @@ Addition :
  (A+B)%mod = A%mod + B%mod
 It still can Overflow, so take modulo of this also.
  (A+B)%mod = (A%mod + B%mod)%mod
+
 Subtraction :
  (A-B)%mod = (A%mod + (-B)%mod)%mod
  (A-B)%mod = (A%mod - B%mod + mod)%mod
+
 Multiplication :
  (A*B)%mod = (A%mod * B%mod)%mod
+
 Division :
 Here comes a little problem to handle division modulo.
 NOTE THAT : (A/B)%mod is not equal to (A%mod / B%mod)%mod.
