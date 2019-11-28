@@ -1,8 +1,9 @@
-Original Post on [quora.com][1].
+<!-- Original Post on [quora.com][1].
 
-[1]: https://www.quora.com/How-do-I-output-modulo-10-9-+-7-in-competitive-programming        "https://www.quora.com/How-do-I-output-modulo-10-9-+-7-in-competitive-programming"
+[1]: https://www.quora.com/How-do-I-output-modulo-10-9-+-7-in-competitive-programming        "https://www.quora.com/How-do-I-output-modulo-10-9-+-7-in-competitive-programming" -->
 
 
+Original Post <a href="https://www.quora.com/How-do-I-output-modulo-10-9-+-7-in-competitive-programming" target="_blank">Quora.com</a>
 -----------------------------------------------------------
 How do I output modulo 10^9 + 7 in competitive programming?
 -----------------------------------------------------------
