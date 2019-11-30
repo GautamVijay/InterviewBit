@@ -48,9 +48,15 @@ int Solution::solve(int A)
     return ans;
 }
 
-
 /* 
 Explanation :
 https://leetcode.com/articles/number-of-digit-one/
+
+Initialize countr as 0.
+Iterate over i from 1 to n incrementing by 10 each time.
+Add (n / (i * 10 ) ) * i to countr after each (i*10) interval.
+Add min( max((n mod (i*10) – i + 1, 0), i) to countr.
+
+O(log n)
 
  */
