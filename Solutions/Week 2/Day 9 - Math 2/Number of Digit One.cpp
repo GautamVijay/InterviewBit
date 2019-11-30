@@ -52,6 +52,8 @@ int Solution::solve(int A)
 Explanation :
 https://leetcode.com/articles/number-of-digit-one/
 
+
+https://www.geeksforgeeks.org/total-no-1s-numbers/
 Initialize countr as 0.
 Iterate over i from 1 to n incrementing by 10 each time.
 Add (n / (i * 10 ) ) * i to countr after each (i*10) interval.
