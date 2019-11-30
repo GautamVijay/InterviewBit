@@ -38,17 +38,28 @@ Output 2:
 int Solution::solve(vector<int> &A, int B) {
     int mod = 1000000007;
     long long int n = A.size();
+
     long long int cnt[B];
+
+    // filling zeros 
     for(int i=0; i<B; i++)
         cnt[i]=0;
+
+    // cnt vector hold the count of the mods
+    // input 1 : [2, 3]
+    // since 2 values (2 and 4) are % B = 0 
+    // 3 values (1, 3 and 5) are %B = 1
     for(int i = 0; i < n; i++){
         cnt[A[i]%B]++;
     }
+
     long long int ans=0;
     ans+=(cnt[0]*(cnt[0]-1))/2;
         for(int i=1; i<=B/2 && i!=B-i; i++){
             ans+=cnt[i]*cnt[B-i];
         }
+
+    // Special case where B is even
     if(B%2==0)
         ans+=(cnt[B/2]*(cnt[B/2]-1))/2;
     return (ans)%mod;
