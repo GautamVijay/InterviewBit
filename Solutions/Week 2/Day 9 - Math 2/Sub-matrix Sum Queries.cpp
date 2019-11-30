@@ -53,78 +53,60 @@ Output 2:
     [22, 19]
  */
 
+vector<int> Solution::solve(vector<vector<int>> &A, vector<int> &B, vector<int> &C, vector<int> &D, vector<int> &E)
+{
 
-vector<int> Solution::solve(vector<vector<int> > &A, vector<int> &B, vector<int> &C, vector<int> &D, vector<int> &E) {
-    
-    vector <int> ans;
-    int N = A.size();       // number of rows
-    int M = A[0].size();    // number of columns
-    vector<vector<int> > temp ( N , vector<int> (M, 0));
-    int modder = 1000000007;
-    
-    if(M==1 &&  N ==1)
-        return A[0];
-        
-    for(int i = 0; i < M; i++){
-        temp[0][i] = A[0][i];
-    }
-    
-    for(int i = 1; i < N; i++){
-        for(int j = 0; j < M; j++){
-            temp[i][j] = ((A[i][j]) + (temp[i-1][j] % modder)) % modder ;
-            // temp[i][j] = temp[i][j] % modder;
-        }
-    }
-            
-    // for(auto a : temp){
-    //     for(auto b : a){
-    //         cout << b << " ";
-    //     }
-    //     cout << endl;
+    vector<int> ans;
+    int N = A.size();    // number of rows
+    int M = A[0].size(); // number of columns
+    vector<vector<int>> temp(N + 1, vector<int>(M + 1, 0));
+    long long int modder = 1000000007;
+
+    // // fill first row with zeros
+    // for(int i = 0; i <= M; i++){
+    //     temp[0][i] = 0;
     // }
-    // cout << "-------------"<< endl;
-    
-    for(int i = 0; i < N; i++){
-        for(int j = 0; j < M; j++){
-            temp[i][j] = ((temp[i][j] % modder) + (temp[i][j-1] % modder)) % modder;
-            // temp[i][j] = temp[i][j] % modder;
+
+    // // fill first column with zeros
+    // for(int i = 0; i <=N; i++){
+    //     temp[i][0] = 0;
+    // }
+
+    for (int i = 1; i <= N; i++)
+    {
+        for (int j = 0; j <= M; j++)
+        {
+            temp[i][j] = (modder + temp[i - 1][j] % modder + temp[i][j - 1] % modder + A[i - 1][j - 1] % modder - temp[i - 1][j - 1] % modder) % modder;
         }
     }
-    
-    // for(auto a : temp){
-    //     for(auto b : a){
-    //         cout << b << " ";
-    //     }
-    //     cout << endl;
-    // }
-    // cout << "B size : " << B.size() << endl;
-    // cout << "-------------"<< endl;
-    for(int i = 0; i < B.size(); i++){
-        int w = B[i]-1;
-        int x = C[i]-1;
-        int y = D[i]-1;
-        int z = E[i]-1;
-        
-        int res = temp[y][z];
-        if(w>0){
-            res = (res%modder - temp[w-1][z]%modder + modder)%modder;
-            // cout << "w>0 : "<< res << endl;
+
+    for (auto a : temp)
+    {
+        for (auto b : a)
+        {
+            cout << b << " ";
         }
-        if(x>0){
-            // cout << res << endl;
-            res = (res%modder - temp[y][x-1]%modder + modder)%modder;
-            // cout << "x>0 : " << res << endl;
+        cout << endl;
+    }
+    cout << "-------------" << endl;
+
+    for (int i = 0; i < B.size(); i++)
+    {
+        int w = B[i];
+        int x = C[i];
+        int y = D[i];
+        int z = E[i];
+
+        int res = (modder + temp[y][z] % modder - temp[w - 1][z] % modder - temp[y][x - 1] % modder + temp[w - 1][x - 1] % modder) % modder;
+        if (res < 0)
+        {
+            res = res + modder;
         }
-        if(w>0 && x > 0){
-            res = (res%modder + temp[w-1][x-1]%modder)%modder;
-            // cout << "w>0 && x>0 : " << res << endl;
-        }
-            
+
         ans.push_back(res % modder);
-        // cout << res << endl;
-        // cout << "-------------"<< endl;
+        cout << res << endl;
+        cout << "-------------" << endl;
     }
-    
+
     return ans;
-    
 }
