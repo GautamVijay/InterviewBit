@@ -74,21 +74,25 @@ vector<int> Solution::solve(vector<vector<int>> &A, vector<int> &B, vector<int> 
 
     for (int i = 1; i <= N; i++)
     {
-        for (int j = 0; j <= M; j++)
+        for (int j = 1; j <= M; j++)
         {
-            temp[i][j] = (modder + temp[i - 1][j] % modder + temp[i][j - 1] % modder + A[i - 1][j - 1] % modder - temp[i - 1][j - 1] % modder) % modder;
+            temp[i][j] = (modder +                    // Since - operation in mod
+                          temp[i - 1][j] % modder +   // top sum
+                          temp[i][j - 1] % modder +   // left sum
+                          A[i - 1][j - 1] % modder -  // add current cell value from A
+                          temp[i - 1][j - 1] % modder // remove 2 times added left-top value
+                          ) %
+                         modder;
         }
     }
 
-    for (auto a : temp)
-    {
-        for (auto b : a)
-        {
-            cout << b << " ";
-        }
-        cout << endl;
-    }
-    cout << "-------------" << endl;
+    // for(auto a : temp){
+    //     for(auto b : a){
+    //         cout << b << " ";
+    //     }
+    //     cout << endl;
+    // }
+    // cout << "-------------"<< endl;
 
     for (int i = 0; i < B.size(); i++)
     {
@@ -97,15 +101,22 @@ vector<int> Solution::solve(vector<vector<int>> &A, vector<int> &B, vector<int> 
         int y = D[i];
         int z = E[i];
 
-        int res = (modder + temp[y][z] % modder - temp[w - 1][z] % modder - temp[y][x - 1] % modder + temp[w - 1][x - 1] % modder) % modder;
+        int res = (modder +                    // due to - op in mod operation
+                   temp[y][z] % modder -       // add bottom right cell value (Total sum)
+                   temp[w - 1][z] % modder -   // remove top from top-left
+                   temp[y][x - 1] % modder +   // remove left from top-left
+                   temp[w - 1][x - 1] % modder // add 2 times removed cell value
+                   ) %
+                  modder;
+        // case handle when values result goes in negative
         if (res < 0)
         {
             res = res + modder;
         }
 
         ans.push_back(res % modder);
-        cout << res << endl;
-        cout << "-------------" << endl;
+        // cout << res << endl;
+        // cout << "-------------"<< endl;
     }
 
     return ans;
