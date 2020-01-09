@@ -32,7 +32,6 @@ int Solution::findMinXor(vector<int> &A) {
     for(int i=0; i < A.size()-1; i++){
         int temp = A[i] ^ A[i+1];
         ans = min(ans, temp);
-    }
-    
+    }    
     return ans;
 }
